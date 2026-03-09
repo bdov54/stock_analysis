@@ -1,0 +1,9 @@
+streamlit
+pandas
+numpy
+openpyxl
+matplotlib
+scikit-learn
+joblib
+google-genai
+toml

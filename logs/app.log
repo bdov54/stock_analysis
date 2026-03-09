@@ -1,0 +1,631 @@
+2026-03-09 00:20:45,372 - INFO - Running pipeline with config: {'file_path': 'C:\\Users\\ADMIN\\AppData\\Local\\Temp\\tmp05vx1ef9.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.0}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Inventories - Total', 'Total Assets'], 'BS4': ['Total Current Liabilities'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'IS1': ['Revenue from Business Activities - Total', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Income before Taxes', 'Income Taxes', 'Net Income after Tax'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Gross Profit - Industrials/Property - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_FCF_margin', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets', 'MED_Asset_Turnover', 'MED_PPE_Assets', 'MED_Inventory_Assets', 'MEAN_Share_Dilution_5Y', 'MED_Firm_Age']}
+2026-03-09 00:20:45,375 - INFO - Loading Excel file: C:\Users\ADMIN\AppData\Local\Temp\tmp05vx1ef9.xlsx
+2026-03-09 00:21:10,076 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 00:21:10,205 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 00:21:10,344 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 00:21:10,536 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 00:21:10,663 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 00:21:10,815 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 00:21:11,015 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 00:21:11,285 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 00:21:11,433 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 00:21:11,577 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 00:21:11,757 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 00:21:11,828 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 00:37:28,507 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.0, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_FCF_margin', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets', 'MED_Asset_Turnover', 'MED_PPE_Assets', 'MED_Inventory_Assets', 'MEAN_Share_Dilution_5Y', 'MED_Firm_Age']}
+2026-03-09 00:37:28,509 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 00:37:37,216 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 00:37:37,320 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 00:37:37,393 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 00:37:37,456 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 00:37:37,515 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 00:37:37,590 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 00:37:37,677 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 00:37:37,744 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 00:37:37,810 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 00:37:37,865 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 00:37:37,934 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 00:37:38,004 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 00:37:38,059 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 00:37:38,273 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 00:37:38,349 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 00:37:38,413 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 00:37:38,457 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 00:37:38,618 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 00:37:40,110 - INFO - Built company-level features for 138 companies.
+2026-03-09 00:37:40,122 - INFO - Hard filter kept 61/138 companies.
+2026-03-09 00:37:40,775 - INFO - KMeans fitted with 4 clusters. Silhouette=0.1738
+2026-03-09 00:37:46,191 - INFO - Artifacts saved to artifacts
+2026-03-09 00:41:53,061 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.0}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_FCF_margin', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets', 'MED_Asset_Turnover', 'MED_PPE_Assets', 'MED_Inventory_Assets', 'MEAN_Share_Dilution_5Y', 'MED_Firm_Age']}
+2026-03-09 00:41:53,064 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 00:42:16,745 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 00:42:16,939 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 00:42:17,165 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 00:42:17,323 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 00:42:17,537 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 00:42:17,718 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 00:42:17,897 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 00:42:18,063 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 00:42:18,218 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 00:42:18,383 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 00:42:18,531 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 00:42:18,786 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 00:42:18,947 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 00:42:19,120 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 00:42:19,282 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 00:42:19,461 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 00:42:19,586 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 00:42:20,001 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 00:42:23,277 - INFO - Built company-level features for 138 companies.
+2026-03-09 00:42:23,368 - INFO - Hard filter kept 61/138 companies.
+2026-03-09 00:42:24,180 - INFO - KMeans fitted with 4 clusters. Silhouette=0.1738
+2026-03-09 00:42:26,877 - INFO - Artifacts saved to artifacts
+2026-03-09 00:42:52,682 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.0}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_FCF_margin', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets', 'MED_Asset_Turnover', 'MED_PPE_Assets', 'MED_Inventory_Assets', 'MEAN_Share_Dilution_5Y', 'MED_Firm_Age']}
+2026-03-09 00:42:52,683 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 00:43:16,276 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 00:43:16,498 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 00:43:16,806 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 00:43:16,971 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 00:43:17,142 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 00:43:17,345 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 00:43:17,531 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 00:43:17,725 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 00:43:18,114 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 00:43:18,413 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 00:43:18,559 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 00:43:18,771 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 00:43:19,130 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 00:43:19,645 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 00:43:19,911 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 00:43:20,343 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 00:43:20,532 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 00:43:21,746 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 00:43:27,899 - INFO - Built company-level features for 138 companies.
+2026-03-09 00:43:28,006 - INFO - Hard filter kept 61/138 companies.
+2026-03-09 00:43:28,641 - INFO - KMeans fitted with 4 clusters. Silhouette=0.1738
+2026-03-09 00:43:31,970 - INFO - Artifacts saved to artifacts
+2026-03-09 00:55:22,923 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 00:55:38,766 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 00:55:38,967 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 00:55:39,311 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 00:55:39,476 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 00:55:39,661 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 00:55:39,832 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 00:55:40,042 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 00:55:40,250 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 00:55:40,575 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 00:55:40,717 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 00:55:40,849 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 00:55:41,186 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 00:55:41,368 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 00:55:41,549 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 00:55:41,828 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 00:55:41,964 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 00:55:42,062 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 00:55:42,452 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 00:55:45,937 - INFO - Built company-level features for 138 companies.
+2026-03-09 00:55:45,974 - INFO - Hard filter kept 61 / 138 companies.
+2026-03-09 00:55:46,433 - INFO - Scoring completed for 61 companies. Top TOTAL_SCORE=1.4777
+2026-03-09 00:55:49,483 - INFO - KMeans fitted with 3 clusters. Silhouette=0.6653 | scaler=robust | features=10
+2026-03-09 01:00:15,911 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 01:00:28,847 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 01:00:28,916 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 01:00:28,981 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 01:00:29,034 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 01:00:29,087 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 01:00:29,153 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 01:00:29,220 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 01:00:29,286 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 01:00:29,345 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 01:00:29,387 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 01:00:29,429 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 01:00:29,507 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 01:00:29,566 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 01:00:29,624 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 01:00:29,683 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 01:00:29,731 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 01:00:29,767 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 01:00:29,987 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 01:00:31,331 - INFO - Built company-level features for 138 companies.
+2026-03-09 01:00:31,347 - INFO - Hard filter kept 61 / 138 companies.
+2026-03-09 01:00:31,459 - INFO - Scoring completed for 61 companies. Top TOTAL_SCORE=1.4777
+2026-03-09 01:00:33,160 - INFO - KMeans fitted with 3 clusters. Silhouette=0.6653 | scaler=robust | features=10
+2026-03-09 01:01:12,838 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 01:01:36,871 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 01:01:36,991 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 01:01:37,151 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 01:01:37,211 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 01:01:37,309 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 01:01:37,511 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 01:01:37,623 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 01:01:37,690 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 01:01:37,771 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 01:01:37,841 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 01:01:37,897 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 01:01:38,000 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 01:01:38,076 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 01:01:38,262 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 01:01:38,342 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 01:01:38,444 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 01:01:38,501 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 01:01:38,743 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 01:01:40,387 - INFO - Built company-level features for 138 companies.
+2026-03-09 01:01:40,407 - INFO - Hard filter kept 61 / 138 companies.
+2026-03-09 01:01:40,672 - INFO - Scoring completed for 61 companies. Top TOTAL_SCORE=1.4777
+2026-03-09 01:01:42,746 - INFO - KMeans fitted with 3 clusters. Silhouette=0.6653 | scaler=robust | features=10
+2026-03-09 01:08:50,632 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 01:09:07,799 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 01:09:07,884 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 01:09:07,963 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 01:09:08,017 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 01:09:08,078 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 01:09:08,144 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 01:09:08,221 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 01:09:08,302 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 01:09:08,392 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 01:09:08,460 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 01:09:08,524 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 01:09:08,607 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 01:09:08,686 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 01:09:08,884 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 01:09:08,998 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 01:09:09,075 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 01:09:09,128 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 01:09:09,401 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 01:09:11,016 - INFO - Built company-level features for 138 companies.
+2026-03-09 01:09:11,029 - INFO - Hard filter kept 61 / 138 companies.
+2026-03-09 01:09:11,133 - INFO - Scoring completed for 61 companies. Top TOTAL_SCORE=1.4777
+2026-03-09 01:09:11,482 - INFO - Cluster search done | scaler=standard | best_k=2 | best_silhouette=0.2023
+2026-03-09 01:09:11,667 - INFO - Cluster search done | scaler=robust | best_k=2 | best_silhouette=0.4054
+2026-03-09 01:09:11,780 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4054 | scaler=robust | features=10 | min_cluster=9 | max_cluster=52
+2026-03-09 01:40:46,033 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.0}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 01:40:46,037 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 01:41:11,499 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 01:41:11,675 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 01:41:11,875 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 01:41:12,000 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 01:41:12,139 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 01:41:12,300 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 01:41:12,469 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 01:41:12,767 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 01:41:12,944 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 01:41:13,082 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 01:41:13,211 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 01:41:13,415 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 01:41:13,568 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 01:41:13,809 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 01:41:13,990 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 01:41:14,128 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 01:41:14,220 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 01:41:14,581 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 01:41:18,182 - INFO - Built company-level features for 138 companies.
+2026-03-09 01:41:18,249 - INFO - Hard filter kept 61 / 138 companies.
+2026-03-09 01:41:18,703 - INFO - Scoring completed for 61 companies. Top TOTAL_SCORE=1.4777
+2026-03-09 01:41:19,797 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4900 | scaler=robust | features=9 | min_cluster=4 | max_cluster=57
+2026-03-09 01:41:19,900 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 01:46:37,162 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.0, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 01:46:37,164 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 01:46:53,110 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 01:46:53,253 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 01:46:53,377 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 01:46:53,487 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 01:46:53,581 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 01:46:53,678 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 01:46:53,780 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 01:46:53,889 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 01:46:53,988 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 01:46:54,263 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 01:46:54,432 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 01:46:54,536 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 01:46:54,638 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 01:46:54,778 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 01:46:54,911 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 01:46:55,033 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 01:46:55,103 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 01:46:55,558 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 01:46:58,401 - INFO - Built company-level features for 138 companies.
+2026-03-09 01:46:58,427 - INFO - Hard filter kept 61 / 138 companies.
+2026-03-09 01:46:58,640 - INFO - Scoring completed for 61 companies. Top TOTAL_SCORE=1.4777
+2026-03-09 01:46:59,741 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4900 | scaler=robust | features=9 | min_cluster=4 | max_cluster=57
+2026-03-09 01:46:59,811 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 01:49:14,304 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.0, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 01:49:14,305 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 01:49:24,271 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 01:49:24,370 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 01:49:24,435 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 01:49:24,479 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 01:49:24,532 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 01:49:24,604 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 01:49:24,687 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 01:49:24,771 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 01:49:24,863 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 01:49:24,936 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 01:49:24,989 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 01:49:25,060 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 01:49:25,331 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 01:49:25,437 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 01:49:25,562 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 01:49:25,632 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 01:49:25,693 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 01:49:25,879 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 01:49:27,363 - INFO - Built company-level features for 138 companies.
+2026-03-09 01:49:27,377 - INFO - Hard filter kept 61 / 138 companies.
+2026-03-09 01:49:27,665 - INFO - Scoring completed for 61 companies. Top TOTAL_SCORE=1.4777
+2026-03-09 01:49:28,165 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4900 | scaler=robust | features=9 | min_cluster=4 | max_cluster=57
+2026-03-09 01:49:28,216 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 01:49:29,924 - INFO - Saved outputs to artifacts
+2026-03-09 01:49:29,932 - INFO - Pipeline completed | round1=61 | round2=36 | portfolio=7
+2026-03-09 01:52:47,612 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 2, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.45, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.0}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 01:52:47,616 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 01:53:07,614 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 01:53:07,774 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 01:53:07,975 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 01:53:08,088 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 01:53:08,211 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 01:53:08,384 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 01:53:08,622 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 01:53:08,770 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 01:53:08,929 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 01:53:09,056 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 01:53:09,179 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 01:53:09,351 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 01:53:09,486 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 01:53:09,716 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 01:53:09,894 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 01:53:10,031 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 01:53:10,127 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 01:53:10,424 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 01:53:13,677 - INFO - Built company-level features for 138 companies.
+2026-03-09 01:53:13,708 - INFO - Hard filter kept 63 / 138 companies.
+2026-03-09 01:53:13,974 - INFO - Scoring completed for 63 companies. Top TOTAL_SCORE=1.4273
+2026-03-09 01:53:14,841 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4498 | scaler=robust | features=9 | min_cluster=4 | max_cluster=59
+2026-03-09 01:53:14,899 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 01:53:17,330 - INFO - Saved outputs to artifacts
+2026-03-09 01:53:17,330 - INFO - Pipeline completed | round1=63 | round2=37 | portfolio=7
+2026-03-09 01:58:28,888 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.0, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 01:58:28,890 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 01:58:47,895 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 01:58:48,062 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 01:58:48,227 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 01:58:48,334 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 01:58:48,466 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 01:58:48,639 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 01:58:48,880 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 01:58:49,056 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 01:58:49,192 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 01:58:49,292 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 01:58:49,419 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 01:58:49,594 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 01:58:49,740 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 01:58:49,884 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 01:58:50,135 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 01:58:50,245 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 01:58:50,326 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 01:58:50,596 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 01:58:53,484 - INFO - Built company-level features for 138 companies.
+2026-03-09 01:58:53,552 - INFO - Hard filter kept 61 / 138 companies.
+2026-03-09 01:58:53,833 - INFO - Scoring completed for 61 companies. Top TOTAL_SCORE=1.4777
+2026-03-09 01:58:54,562 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4900 | scaler=robust | features=9 | min_cluster=4 | max_cluster=57
+2026-03-09 01:58:54,689 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 01:58:56,674 - INFO - Saved outputs to artifacts
+2026-03-09 01:58:56,675 - INFO - Pipeline completed | round1=61 | round2=36 | portfolio=7
+2026-03-09 01:59:42,447 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.15, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 01:59:42,447 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 02:00:01,008 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 02:00:01,139 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 02:00:01,317 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 02:00:01,435 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 02:00:01,560 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 02:00:01,770 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 02:00:01,985 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 02:00:02,128 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 02:00:02,278 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 02:00:02,394 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 02:00:02,502 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 02:00:02,649 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 02:00:02,789 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 02:00:03,040 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 02:00:03,194 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 02:00:03,325 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 02:00:03,427 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 02:00:03,707 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 02:00:06,221 - INFO - Built company-level features for 138 companies.
+2026-03-09 02:00:06,246 - INFO - Hard filter kept 20 / 138 companies.
+2026-03-09 02:00:06,562 - INFO - Scoring completed for 20 companies. Top TOTAL_SCORE=1.4507
+2026-03-09 02:00:06,758 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4553 | scaler=robust | features=9 | min_cluster=2 | max_cluster=18
+2026-03-09 02:00:06,815 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 02:00:09,066 - INFO - Saved outputs to artifacts
+2026-03-09 02:00:09,066 - INFO - Pipeline completed | round1=20 | round2=11 | portfolio=7
+2026-03-09 07:29:37,119 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.15, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 07:29:37,123 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 07:29:37,208 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.15, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 07:29:37,209 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 07:29:59,142 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 07:29:59,167 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 07:29:59,435 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 07:29:59,436 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 07:29:59,671 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 07:29:59,674 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 07:29:59,822 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 07:29:59,823 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 07:29:59,990 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 07:30:00,104 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 07:30:00,221 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 07:30:00,221 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 07:30:00,393 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 07:30:00,491 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 07:30:00,588 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 07:30:00,619 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 07:30:00,743 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 07:30:00,744 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 07:30:00,876 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 07:30:00,878 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 07:30:01,005 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 07:30:01,008 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 07:30:01,257 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 07:30:01,261 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 07:30:01,467 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 07:30:01,480 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 07:30:01,692 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 07:30:01,706 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 07:30:01,870 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 07:30:01,935 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 07:30:02,039 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 07:30:02,040 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 07:30:02,136 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 07:30:02,160 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 07:30:02,563 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 07:30:02,581 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 07:30:06,026 - INFO - Built company-level features for 138 companies.
+2026-03-09 07:30:06,093 - INFO - Built company-level features for 138 companies.
+2026-03-09 07:30:06,109 - INFO - Hard filter kept 20 / 138 companies.
+2026-03-09 07:30:06,176 - INFO - Hard filter kept 20 / 138 companies.
+2026-03-09 07:30:06,516 - INFO - Scoring completed for 20 companies. Top TOTAL_SCORE=1.4507
+2026-03-09 07:30:06,518 - INFO - Scoring completed for 20 companies. Top TOTAL_SCORE=1.4507
+2026-03-09 07:30:07,225 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4553 | scaler=robust | features=9 | min_cluster=2 | max_cluster=18
+2026-03-09 07:30:07,231 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4553 | scaler=robust | features=9 | min_cluster=2 | max_cluster=18
+2026-03-09 07:30:07,283 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 07:30:07,285 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 07:30:09,671 - INFO - Saved outputs to artifacts
+2026-03-09 07:30:09,671 - INFO - Pipeline completed | round1=20 | round2=11 | portfolio=7
+2026-03-09 07:30:09,895 - INFO - Saved outputs to artifacts
+2026-03-09 07:30:09,897 - INFO - Pipeline completed | round1=20 | round2=11 | portfolio=7
+2026-03-09 07:33:08,662 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.15, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 07:33:08,663 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 07:33:30,492 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 07:33:30,687 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 07:33:30,852 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 07:33:30,954 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 07:33:31,091 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 07:33:31,241 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 07:33:31,413 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 07:33:31,579 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 07:33:31,757 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 07:33:31,866 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 07:33:31,984 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 07:33:32,174 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 07:33:32,346 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 07:33:32,533 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 07:33:32,750 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 07:33:33,012 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 07:33:33,354 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 07:33:36,751 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 07:33:42,484 - INFO - Built company-level features for 138 companies.
+2026-03-09 07:33:42,577 - INFO - Hard filter kept 20 / 138 companies.
+2026-03-09 07:33:42,790 - INFO - Scoring completed for 20 companies. Top TOTAL_SCORE=1.4507
+2026-03-09 07:33:45,170 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4553 | scaler=robust | features=9 | min_cluster=2 | max_cluster=18
+2026-03-09 07:33:46,249 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 07:33:49,541 - INFO - Saved outputs to artifacts
+2026-03-09 07:33:49,542 - INFO - Pipeline completed | round1=20 | round2=11 | portfolio=7
+2026-03-09 07:35:41,219 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.0, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 07:35:41,223 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 07:36:01,691 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 07:36:01,915 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 07:36:02,352 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 07:36:02,514 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 07:36:02,632 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 07:36:02,767 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 07:36:02,934 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 07:36:03,130 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 07:36:03,360 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 07:36:03,508 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 07:36:03,663 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 07:36:03,827 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 07:36:03,959 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 07:36:04,118 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 07:36:04,257 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 07:36:04,406 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 07:36:04,503 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 07:36:04,896 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 07:36:07,957 - INFO - Built company-level features for 138 companies.
+2026-03-09 07:36:08,473 - INFO - Hard filter kept 61 / 138 companies.
+2026-03-09 07:36:09,587 - INFO - Scoring completed for 61 companies. Top TOTAL_SCORE=1.4777
+2026-03-09 07:36:14,483 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4900 | scaler=robust | features=9 | min_cluster=4 | max_cluster=57
+2026-03-09 07:36:14,668 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 07:36:16,573 - INFO - Saved outputs to artifacts
+2026-03-09 07:36:16,573 - INFO - Pipeline completed | round1=61 | round2=36 | portfolio=7
+2026-03-09 07:44:06,599 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.15, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 07:44:06,604 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 07:44:38,013 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 07:44:38,170 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 07:44:38,350 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 07:44:38,483 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 07:44:38,838 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 07:44:39,007 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 07:44:39,115 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 07:44:39,192 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 07:44:39,268 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 07:44:39,324 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 07:44:39,387 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 07:44:39,504 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 07:44:39,576 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 07:44:39,650 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 07:44:39,877 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 07:44:39,944 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 07:44:40,041 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 07:44:40,247 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 07:44:41,556 - INFO - Built company-level features for 138 companies.
+2026-03-09 07:44:41,569 - INFO - Hard filter kept 20 / 138 companies.
+2026-03-09 07:44:41,679 - INFO - Scoring completed for 20 companies. Top TOTAL_SCORE=1.4507
+2026-03-09 07:44:42,243 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4553 | scaler=robust | features=9 | min_cluster=2 | max_cluster=18
+2026-03-09 07:44:42,289 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 07:44:43,470 - INFO - Saved outputs to artifacts
+2026-03-09 07:44:43,472 - INFO - Pipeline completed | round1=20 | round2=11 | portfolio=7
+2026-03-09 07:46:09,420 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.15, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 07:46:09,425 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 07:46:32,018 - INFO - Loaded COMP <- COMP | rows=143
+2026-03-09 07:46:32,276 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 07:46:32,493 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 07:46:32,590 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 07:46:32,721 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 07:46:32,886 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 07:46:33,037 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 07:46:33,142 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 07:46:33,277 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 07:46:33,369 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 07:46:33,539 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 07:46:33,733 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 07:46:33,839 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 07:46:33,973 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 07:46:34,140 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 07:46:34,272 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 07:46:34,359 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 07:46:34,781 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 07:46:37,534 - INFO - Built company-level features for 138 companies.
+2026-03-09 07:46:37,549 - INFO - Hard filter kept 20 / 138 companies.
+2026-03-09 07:46:37,773 - INFO - Scoring completed for 20 companies. Top TOTAL_SCORE=1.4507
+2026-03-09 07:51:35,345 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.15, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 07:51:35,348 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 07:51:53,322 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 07:51:53,449 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 07:51:53,572 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 07:51:53,653 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 07:51:53,757 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 07:51:53,872 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 07:51:53,988 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 07:51:54,090 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 07:51:54,281 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 07:51:54,422 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 07:51:54,503 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 07:51:54,663 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 07:51:54,783 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 07:51:54,910 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 07:51:55,044 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 07:51:55,151 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 07:51:55,222 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 07:51:55,643 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 07:51:58,052 - INFO - Built company-level features for 138 companies.
+2026-03-09 07:51:58,682 - INFO - Hard filter kept 20 / 138 companies.
+2026-03-09 07:51:59,713 - INFO - Scoring completed for 20 companies. Top TOTAL_SCORE=1.4507
+2026-03-09 07:51:59,981 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4553 | scaler=robust | features=9 | min_cluster=2 | max_cluster=18
+2026-03-09 07:52:00,027 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 07:52:02,210 - INFO - Saved outputs to artifacts
+2026-03-09 07:52:02,210 - INFO - Pipeline completed | round1=20 | round2=11 | portfolio=7
+2026-03-09 07:59:19,705 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.15, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 07:59:19,723 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 07:59:50,167 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 07:59:50,339 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 07:59:50,581 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 07:59:50,744 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 07:59:50,881 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 07:59:51,061 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 07:59:51,227 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 07:59:51,363 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 07:59:51,510 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 07:59:51,627 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 07:59:51,852 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 07:59:52,076 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 07:59:52,259 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 07:59:52,446 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 07:59:52,599 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 07:59:52,715 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 07:59:52,810 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 07:59:53,323 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 07:59:56,384 - INFO - Built company-level features for 138 companies.
+2026-03-09 07:59:56,538 - INFO - Hard filter kept 20 / 138 companies.
+2026-03-09 07:59:56,898 - INFO - Scoring completed for 20 companies. Top TOTAL_SCORE=1.4507
+2026-03-09 07:59:57,166 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4553 | scaler=robust | features=9 | min_cluster=2 | max_cluster=18
+2026-03-09 07:59:57,241 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 07:59:59,940 - INFO - Saved outputs to artifacts
+2026-03-09 07:59:59,945 - INFO - Pipeline completed | round1=20 | round2=11 | portfolio=7
+2026-03-09 08:43:49,470 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.0, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 08:43:49,472 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 08:44:14,637 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 08:44:14,767 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 08:44:14,889 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 08:44:14,949 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 08:44:15,016 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 08:44:15,085 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 08:44:15,160 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 08:44:15,248 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 08:44:15,345 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 08:44:15,553 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 08:44:15,621 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 08:44:15,715 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 08:44:15,824 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 08:44:15,925 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 08:44:16,003 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 08:44:16,073 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 08:44:16,116 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 08:44:16,279 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 08:44:18,186 - INFO - Built company-level features for 138 companies.
+2026-03-09 08:44:18,220 - INFO - Hard filter kept 61 / 138 companies.
+2026-03-09 08:44:18,364 - INFO - Scoring completed for 61 companies. Top TOTAL_SCORE=1.4777
+2026-03-09 08:44:18,829 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4900 | scaler=robust | features=9 | min_cluster=4 | max_cluster=57
+2026-03-09 08:44:18,887 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 08:44:19,963 - INFO - Saved outputs to artifacts
+2026-03-09 08:44:19,963 - INFO - Pipeline completed | round1=61 | round2=36 | portfolio=7
+2026-03-09 08:45:54,201 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 3.9, 'min_roe': 0.15, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 08:45:54,203 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 08:46:15,706 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 08:46:15,924 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 08:46:16,178 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 08:46:16,276 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 08:46:16,361 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 08:46:16,443 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 08:46:16,548 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 08:46:16,622 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 08:46:16,708 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 08:46:16,769 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 08:46:16,821 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 08:46:16,898 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 08:46:16,985 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 08:46:17,157 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 08:46:17,272 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 08:46:17,418 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 08:46:17,474 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 08:46:17,680 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 08:46:19,148 - INFO - Built company-level features for 138 companies.
+2026-03-09 08:46:19,167 - INFO - Hard filter kept 19 / 138 companies.
+2026-03-09 08:46:19,278 - INFO - Scoring completed for 19 companies. Top TOTAL_SCORE=1.4331
+2026-03-09 08:46:19,512 - INFO - KMeans fitted with 2 clusters. Silhouette=0.3538 | scaler=robust | features=9 | min_cluster=2 | max_cluster=17
+2026-03-09 08:46:19,578 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 08:46:20,830 - INFO - Saved outputs to artifacts
+2026-03-09 08:46:20,830 - INFO - Pipeline completed | round1=19 | round2=11 | portfolio=7
+2026-03-09 09:04:41,470 - INFO - Running pipeline with config: {'file_path': 'data/Greece.xlsx', 'artifacts_dir': 'artifacts', 'charts_dir': 'artifacts/charts', 'year_min': 2018, 'year_max': 2024, 'window_years': 5, 'slope_years': 3, 'cluster_scaler_typ': 'robust', 'cluster_clip_quantiles': (0.01, 0.99), 'cluster_min_size': 5, 'cluster_k_fixed': 2, 'show_cluster_in_ui': False, 'mode': 'data-driven', 'target_keep': 0.25, 'use_clustering': True, 'n_clusters': 4, 'portfolio_size': 7, 'max_per_cluster': 2, 'hard_filter_rules': {'min_coverage': 0.6, 'min_cfo_ni': 0.5, 'max_de_ratio': 2.5, 'max_netdebt_ebitda': 4.0, 'min_roe': 0.15, 'require_positive_equity': True}, 'scoring_weights': {'growth': 0.35, 'efficiency': 0.3, 'quality': 0.2, 'safety': 0.15}, 'manual_thresholds': {}, 'selected_fields': {'COMP': ['Code', 'Company Common Name', 'GICS Sub-Industry Name', 'Organization Founded Year', 'Date Became Public', 'TRBC Industry Name', 'Country of Exchange'], 'BS1': ['Cash & Cash Equivalents - Total', 'Trade Accounts & Trade Notes Receivable - Net', 'Inventories - Total'], 'BS2': ['Total Current Assets', 'Property Plant & Equipment - Net - Total'], 'BS3': ['Total Assets'], 'BS4': ['Short-Term Debt & Current Portion of Long-Term Debt', 'Total Current Liabilities'], 'BS5': ['Debt - Long-Term - Total'], 'BS6': ['Total Liabilities', 'Common Equity Attributable to Parent Shareholders', 'Common Equity - Total', "Total Shareholders' Equity incl Minority Intr & Hybrid Debt", 'Retained Earnings - Total', 'Total Liabilities & Equity'], 'BS7': ['Common Shares - Outstanding - Total', 'Common Shares - Issued - Total'], 'BS8': ['Net Debt', 'Debt - Total', 'Cash & Cash Equivalents - Total', 'Net Operating Assets', 'Shareholders Equity - Common', 'Tangible Total Equity'], 'BS9': ['Working Capital'], 'IS1': ['Revenue from Business Activities - Total', 'Revenue from Goods & Services', 'Employees - Full-Time/Full-Time Equivalents - Period End'], 'IS2': ['Gross Profit - Industrials/Property - Total', 'Income before Taxes', 'Income Taxes', 'Net Income after Tax', 'Net Income after Minority Interest'], 'IS3': ['EPS - Basic - excl Extraordinary Items, Common - Total', 'EPS - Basic - excl Extraordinary Items - Normalized - Total', 'DPS - Common - Net - Issue - By Announcement Date'], 'IS4': ['Revenue from Business Activities - Total', 'Earnings before Interest & Taxes (EBIT)', 'Earnings before Interest Taxes Depreciation & Amortization', 'Operating Expenses - Total', 'Depreciation Depletion & Amortization - Total'], 'CF1': ['Net Cash Flow from Operating Activities', 'Capital Expenditures - Total', 'Dividends - Common - Cash Paid'], 'CF2': ['Net Cash Flow from Investing Activities', 'Capital Expenditures - Total'], 'CF3': ['Free Cash Flow', 'Free Cash Flow to Equity', 'Free Cash Flow Net of Dividends', 'Dividends Provided/Paid - Common']}, 'metric_rules': {'MED_ROE': 'high', 'MED_EBIT_margin': 'high', 'MED_Gross_margin': 'high', 'MED_Asset_Turnover': 'high', 'MED_REV_CAGR_3Y': 'high', 'MED_EPS_CAGR_3Y': 'high', 'SLOPE_EBIT_margin_3Y': 'high', 'MED_CFO_NI': 'high', 'MED_CFO_margin': 'high', 'MED_FCF_margin': 'high', 'MED_Sloan': 'abs_low', 'MED_D_E': 'low', 'MED_NetDebt_EBITDA': 'low', 'MED_Current_Ratio': 'high', 'MED_Cash_Assets': 'high', 'MEAN_Share_Dilution_5Y': 'low'}, 'pillar_metrics': {'growth': ['MED_REV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'SLOPE_EBIT_margin_3Y'], 'efficiency': ['MED_ROE', 'MED_EBIT_margin', 'MED_Gross_margin', 'MED_Asset_Turnover'], 'quality': ['MED_CFO_NI', 'MED_CFO_margin', 'MED_FCF_margin', 'MED_Sloan'], 'safety': ['MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_Cash_Assets']}, 'cluster_features': ['MED_ROE', 'MED_EBIT_margin', 'MED_ReEV_CAGR_3Y', 'MED_EPS_CAGR_3Y', 'MED_CFO_NI', 'MED_D_E', 'MED_NetDebt_EBITDA', 'MED_Current_Ratio', 'MED_PPE_Assets', 'MED_Firm_Age']}
+2026-03-09 09:04:41,476 - INFO - Loading Excel file: data/Greece.xlsx
+2026-03-09 09:05:00,423 - WARNING - Skipped COMP: [COMP] missing CompID/Year
+2026-03-09 09:05:00,546 - INFO - Loaded BS1 <- BS1 | rows=920
+2026-03-09 09:05:00,652 - INFO - Loaded BS2 <- BS2 | rows=920
+2026-03-09 09:05:00,721 - INFO - Loaded BS3 <- BS3 | rows=927
+2026-03-09 09:05:00,791 - INFO - Loaded BS4 <- BS4 | rows=906
+2026-03-09 09:05:00,903 - INFO - Loaded BS5 <- BS5 | rows=912
+2026-03-09 09:05:01,065 - INFO - Loaded BS6 <- BS6 | rows=927
+2026-03-09 09:05:01,146 - INFO - Loaded BS7 <- BS7 | rows=927
+2026-03-09 09:05:01,231 - INFO - Loaded BS8 <- BS8 | rows=927
+2026-03-09 09:05:01,313 - INFO - Loaded BS9 <- BS9 | rows=927
+2026-03-09 09:05:01,481 - INFO - Loaded IS1 <- IS1 | rows=927
+2026-03-09 09:05:01,591 - INFO - Loaded IS2 <- IS2 | rows=926
+2026-03-09 09:05:02,029 - INFO - Loaded IS3 <- IS3 | rows=926
+2026-03-09 09:05:02,260 - INFO - Loaded IS4 <- IS4 | rows=926
+2026-03-09 09:05:02,430 - INFO - Loaded CF1 <- CF1 | rows=919
+2026-03-09 09:05:02,589 - INFO - Loaded CF2 <- CF2 | rows=919
+2026-03-09 09:05:02,722 - INFO - Loaded CF3 <- CF3 | rows=921
+2026-03-09 09:05:03,027 - INFO - Built yearly features for 927 company-year rows.
+2026-03-09 09:05:04,857 - INFO - Built company-level features for 138 companies.
+2026-03-09 09:05:04,879 - INFO - Hard filter kept 20 / 138 companies.
+2026-03-09 09:05:04,990 - INFO - Scoring completed for 20 companies. Top TOTAL_SCORE=1.4507
+2026-03-09 09:05:05,510 - INFO - KMeans fitted with 2 clusters. Silhouette=0.4553 | scaler=robust | features=9 | min_cluster=2 | max_cluster=18
+2026-03-09 09:05:05,558 - INFO - Saved cluster artifacts to artifacts
+2026-03-09 09:05:06,928 - INFO - Saved outputs to artifacts
+2026-03-09 09:05:06,934 - INFO - Pipeline completed | round1=20 | round2=11 | portfolio=7
